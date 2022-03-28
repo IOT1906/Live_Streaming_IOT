@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Live_Streaming_IOT.Product_List;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -45,6 +46,14 @@ public class Live_Streaming_IOTDbContext :
     public DbSet<OrganizationUnit> OrganizationUnits { get; set; }
     public DbSet<IdentitySecurityLog> SecurityLogs { get; set; }
     public DbSet<IdentityLinkUser> LinkUsers { get; set; }
+    /// <summary>
+    /// 商品表
+    /// </summary>
+    public DbSet<TbCommodityInfo> CommodityInfo { get;set;}
+    /// <summary>
+    /// 商品分类表
+    /// </summary>
+    public DbSet<TbCommodityType> CommodityType { get; set; }
 
     // Tenant Management
     public DbSet<Tenant> Tenants { get; set; }

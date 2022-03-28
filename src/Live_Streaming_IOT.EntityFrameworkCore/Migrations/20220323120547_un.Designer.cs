@@ -4,6 +4,7 @@ using Live_Streaming_IOT.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -12,9 +13,10 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Live_Streaming_IOT.Migrations
 {
     [DbContext(typeof(Live_Streaming_IOTDbContext))]
-    partial class Live_Streaming_IOTDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220323120547_un")]
+    partial class un
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

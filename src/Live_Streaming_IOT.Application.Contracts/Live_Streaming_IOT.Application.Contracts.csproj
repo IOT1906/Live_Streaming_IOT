@@ -3,12 +3,13 @@
   <Import Project="..\..\common.props" />
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>Live_Streaming_IOT</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Live_Streaming_IOT.Domain.Shared\Live_Streaming_IOT.Domain.Shared.csproj" />
+    <ProjectReference Include="..\Live_Streaming_IOT.Domain\Live_Streaming_IOT.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
