@@ -37,6 +37,8 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
+using System.Linq;
+using Microsoft.AspNetCore.Cors;
 
 namespace Live_Streaming_IOT.Web;
 
@@ -70,12 +72,28 @@ public class Live_Streaming_IOTWebModule : AbpModule
             );
         });
     }
+    private const string DefaultCorsPolicyName = "Default";
+    private void ConfigureCors(ServiceConfigurationContext context, IConfiguration configuration)
+    {
+        context.Services.AddCors(options =>
+        {
+            options.AddPolicy(DefaultCorsPolicyName, builder =>
+            {
+                builder
+                    .AllowAnyOrigin()
+                    .WithAbpExposedHeaders()
+                    .SetIsOriginAllowedToAllowWildcardSubdomains()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+            });
+        });
+    }
+
 
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         var hostingEnvironment = context.Services.GetHostingEnvironment();
         var configuration = context.Services.GetConfiguration();
-
         ConfigureUrls(configuration);
         ConfigureBundles();
         ConfigureAuthentication(context, configuration);
@@ -84,6 +102,8 @@ public class Live_Streaming_IOTWebModule : AbpModule
         ConfigureLocalizationServices();
         ConfigureNavigationServices();
         ConfigureAutoApiControllers();
+        //CorsOrigins 设置
+        ConfigureCors(context, configuration);
         ConfigureSwaggerServices(context.Services);
     }
 
@@ -201,6 +221,10 @@ public class Live_Streaming_IOTWebModule : AbpModule
     {
         var app = context.GetApplicationBuilder();
         var env = context.GetEnvironment();
+
+        app.UseCors(DefaultCorsPolicyName);
+        app.UseIdentityServer();
+        app.UseAuthorization();
 
         if (env.IsDevelopment())
         {

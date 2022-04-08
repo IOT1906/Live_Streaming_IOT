@@ -1,4 +1,5 @@
-﻿using Live_Streaming_IOT.Product_List;
+﻿using Live_Streaming_IOT.Brand;
+using Live_Streaming_IOT.Classify;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -47,13 +48,29 @@ public class Live_Streaming_IOTDbContext :
     public DbSet<IdentitySecurityLog> SecurityLogs { get; set; }
     public DbSet<IdentityLinkUser> LinkUsers { get; set; }
     /// <summary>
-    /// 商品表
+    /// 品牌管理表
     /// </summary>
-    public DbSet<TbCommodityInfo> CommodityInfo { get;set;}
+    public DbSet<Brand_List> Brand_List { get;set;}
     /// <summary>
-    /// 商品分类表
+    /// 分类表
     /// </summary>
-    public DbSet<TbCommodityType> CommodityType { get; set; }
+    public DbSet<Category_listings> Category_listings { get; set; }
+    /// <summary>
+    /// 详情表
+    /// </summary>
+    public DbSet<Detalis> Detalis { get; set; }
+    /// <summary>
+    /// 橱窗表
+    /// </summary>
+    public DbSet<Showcase> Showcase { get; set; }
+    /// <summary>
+    /// 规格信息表
+    /// </summary>
+    public DbSet<SKU> SKU { get; set; }
+    /// <summary>
+    /// 款式信息
+    /// </summary>
+    public DbSet<SPU> SPU { get; set; }
 
     // Tenant Management
     public DbSet<Tenant> Tenants { get; set; }

@@ -24,67 +24,28 @@ namespace Live_Streaming_IOT.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Live_Streaming_IOT.Product_List.TbCommodityInfo", b =>
+            modelBuilder.Entity("Live_Streaming_IOT.Brand.Brand_List", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("CommodSpeciId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CommodTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("CommodiSPromotion")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("CommodityAttrName")
+                    b.Property<string>("BrandLogo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CommodityBarCode")
+                    b.Property<string>("BrandName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CommodityBorwseNum")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CommodityDescription")
+                    b.Property<string>("BrandShow")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CommodityDetails")
+                    b.Property<int>("BrandSort")
+                        .HasColumnType("int");
+
+                    b.Property<string>("BrandWebsite")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CommodityDisplay")
+                    b.Property<string>("Branddescription")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CommodityEvaluaNum")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CommodityId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CommodityInfoIntegrity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CommodityName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CommoditySaleBegin")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("CommoditySaleNum")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("CommoditySalePrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("CommodityState")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CommoditySubtitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CommodityWeight")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2")
@@ -104,28 +65,19 @@ namespace Live_Streaming_IOT.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CommodityInfo");
+                    b.ToTable("Brand_List");
                 });
 
-            modelBuilder.Entity("Live_Streaming_IOT.Product_List.TbCommodityType", b =>
+            modelBuilder.Entity("Live_Streaming_IOT.Classify.Category_listings", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("CommodTypeAlias")
+                    b.Property<string>("CName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CommodTypeDisplay")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CommodTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CommodTypeName")
+                    b.Property<string>("Categret")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CommodTypeOrder")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2")
@@ -143,9 +95,197 @@ namespace Live_Streaming_IOT.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("LastModifierId");
 
+                    b.Property<int>("Sort")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("CommodityType");
+                    b.ToTable("Category_listings");
+                });
+
+            modelBuilder.Entity("Live_Streaming_IOT.Classify.Detalis", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<decimal>("DetailPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("DetailTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DetailsImg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Detalis");
+                });
+
+            modelBuilder.Entity("Live_Streaming_IOT.Classify.Showcase", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<string>("Imagelinks")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<string>("Preview")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShowCaseSort")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShowcaseMap")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Showcase");
+                });
+
+            modelBuilder.Entity("Live_Streaming_IOT.Classify.SKU", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<string>("Productlist")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SKUBatch")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SKUColor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SKUNum")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SKUSellPrice")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SKU");
+                });
+
+            modelBuilder.Entity("Live_Streaming_IOT.Classify.SPU", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<decimal>("ProdictMarket")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ProdictRecommend")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductBelong")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductBrand")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductGift")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductHight")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductLabel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductModel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductNum")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductParameter")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("ProductPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ProductWelfare")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Supplier")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SPU");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
